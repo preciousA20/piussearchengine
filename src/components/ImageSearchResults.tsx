@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { Suspense } from 'react'
 import PaginationButton from './PaginationButton'
 
 const ImageSearchResults = ({results}:{results: any}) => {
@@ -23,7 +24,10 @@ const ImageSearchResults = ({results}:{results: any}) => {
             ))}
         </div>
         <div className='ml-16'>
-            <PaginationButton />
+            <Suspense>
+                <PaginationButton />
+            </Suspense>
+            
         </div>
     </div>
   )

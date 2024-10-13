@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Suspense } from 'react'
 import SearchBox from './SearchBox'
 import { RiSettings3Line } from 'react-icons/ri'
 import { TbGridDots } from 'react-icons/tb'
@@ -28,7 +29,9 @@ const SearchHeader = () => {
             <SearchBox />
           </div>
 
+          <Suspense>
           <SearchHeaderOption />
+          </Suspense>
     </header>
   )
 }
