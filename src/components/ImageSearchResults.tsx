@@ -24,7 +24,7 @@ const ImageSearchResults = ({results}:{results: any}) => {
             ))}
         </div>
         <div className='ml-16'>
-            <Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
                 <PaginationButton />
             </Suspense>
             

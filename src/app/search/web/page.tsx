@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import WebSearchResults from '@/components/WebSearchResults'
+import { Suspense } from 'react'
 
 const webSearchPage = async({searchParams}:{searchParams: any}) => {
   const startIndex = searchParams.start || 1 
-  await new Promise((resolve) => setTimeout(resolve, 4000))
+  await new Promise((resolve) => setTimeout(resolve, 1000))
   const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&start=${startIndex}`)
   const data = await response.json()
   const results = data.items
@@ -23,7 +24,11 @@ const webSearchPage = async({searchParams}:{searchParams: any}) => {
 
   return (  
     <div>
-      {results && <WebSearchResults results={data}/>}
+      {results && (
+        <Suspense fallback={<div>Loading...</div>}>
+          <WebSearchResults results={data}/>
+        </Suspense>
+      )}
     </div>
   )
 }

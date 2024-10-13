@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import { Suspense } from 'react'
 import SearchBox from './SearchBox'
 import { RiSettings3Line } from 'react-icons/ri'
@@ -26,10 +25,12 @@ const SearchHeader = () => {
       </div>
       
       <div className='flex-1'>
+      <Suspense fallback={<div>Loading...</div>}>
             <SearchBox />
+            </Suspense>
           </div>
 
-          <Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
           <SearchHeaderOption />
           </Suspense>
     </header>
